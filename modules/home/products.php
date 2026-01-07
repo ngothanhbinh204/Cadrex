@@ -1,8 +1,11 @@
 <?php
-// Changed from repeater to Relationship field
-$products = get_sub_field('product_relationship');
+if (have_rows('home_products')):
+    while (have_rows('home_products')): the_row();
+        if (!get_sub_field('enable_section')) continue;
+        
+        $products = get_sub_field('product_relationship');
 
-if ($products):
+        if ($products):
 ?>
 <section class="section-py section-list-text-image">
     <?php foreach ($products as $post): 
@@ -10,12 +13,9 @@ if ($products):
         // Get data from post
         $image_id = get_post_thumbnail_id($post->ID);
         $title = get_the_title($post->ID);
-        $description = get_the_excerpt($post->ID); // Uses excerpt for description
+        $description = get_the_excerpt($post->ID);
         $link = get_permalink($post->ID);
         
-        // Custom fields if needed for sub_title etc.
-        // Assuming 'sub_title' might be a custom field on the product or just hardcoded "Our Products"
-        // The HTML had "Our Products" as sub-title.
         $sub_title = "Our Products"; 
     ?>
     <div class="item-text-image">
@@ -34,7 +34,11 @@ if ($products):
         </div>
     </div>
     <?php endforeach; 
-    wp_reset_postdata(); // IMPORTANT
+    wp_reset_postdata(); 
     ?>
 </section>
-<?php endif; ?>
+<?php 
+        endif;
+    endwhile;
+endif;
+?>

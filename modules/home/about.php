@@ -1,8 +1,12 @@
 <?php
-$title = get_sub_field('title');
-$content = get_sub_field('content');
-$link = get_sub_field('link');
-$image = get_sub_field('image');
+if (have_rows('home_about')):
+    while (have_rows('home_about')): the_row();
+        if (!get_sub_field('enable_section')) continue;
+
+        $title = get_sub_field('title');
+        $content = get_sub_field('content');
+        $link = get_sub_field('link');
+        $image = get_sub_field('image');
 ?>
 <section class="section-home-about">
     <div class="container grid items-center md:grid-cols-2 grid-cols-1 gap-base">
@@ -19,8 +23,12 @@ $image = get_sub_field('image');
         </div>
         <div class="box-image" data-aos="fade-left" data-aos-delay="100">
             <div class="img-ratio ratio:pt-[1_1]">
-                <?php echo get_image_attrachment($image); ?>
+                <?php echo get_image_attrachment($image, 'image'); ?>
             </div>
         </div>
     </div>
 </section>
+<?php 
+    endwhile;
+endif;
+?>

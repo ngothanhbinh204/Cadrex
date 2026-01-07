@@ -1,7 +1,11 @@
 <?php
-$title = get_sub_field('title');
-$description = get_sub_field('description');
-$service_list = get_sub_field('service_list');
+if (have_rows('home_services')):
+    while (have_rows('home_services')): the_row();
+        if (!get_sub_field('enable_section')) continue;
+
+        $title = get_sub_field('title');
+        $description = get_sub_field('description');
+        $service_list = get_sub_field('service_list');
 ?>
 <section class="section-field-op section-py">
     <div class="container">
@@ -23,20 +27,18 @@ $service_list = get_sub_field('service_list');
                     ?>
                     <li class="swiper-slide field-op-item relative xl:flex-1 rem:!h-[640px] overflow-hidden group transition-500">
                         <div class="thumb img-full w-full h-full">
-                            <?php echo get_image_attrachment($image); ?>
+                            <?php echo get_image_attrachment($image, 'image'); ?>
                         </div>
                         <div class="wrap-content-top absolute z-3 top-0 left-0 p-6 -lg:p-5 w-full flex items-center justify-between">
                             <h3 class="title heading-7 font-bold transition-500 ease-linear text-white"><?php echo $item_title; ?></h3>
                             <?php if ($item_link): ?>
-                            <a class="icon" href="<?php echo esc_url($item_link['url']); ?>"> </a>
-                            <?php else: ?>
-                            <a class="icon" href="#"> </a>
+                            <a class="icon" href="<?php echo esc_url($item_link['url']); ?>" target="<?php echo esc_attr($item_link['target'] ? $item_link['target'] : '_self'); ?>"> </a>
                             <?php endif; ?>
                         </div>
                         <div class="info absolute z-3 bottom-0 left-0 w-full p-5 md:p-6 text-white transition-500 ease-linear ">                               
                             <div class="box-content body-1 border-[1.5px] border-white/20 bg-black/40 backdrop-blur-[10px] rounded-[8px] lg:p-10 p-5 ">
                                 <div class="content">
-                                    <?php echo $item_desc; ?>
+                                    <p><?php echo $item_desc; ?></p>
                                 </div>
                             </div>
                         </div>
@@ -48,3 +50,7 @@ $service_list = get_sub_field('service_list');
         </div>
     </div>
 </section>
+<?php 
+    endwhile;
+endif;
+?>

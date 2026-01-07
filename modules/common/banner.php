@@ -3,11 +3,11 @@
  * Banner module (Common)
  * Logic:
  * 1. If Category/Archive: Show banner of that category (using ACF field 'banner_image' on term)
- * 2. If Page (Home or other): Show ACF repeater 'banner_list' from current page
+ * 2. If Page: Show selected banners from 'banner_select_page' (CPT Banner). Each CPT Banner contains a repeater of slides.
  */
 
 // Init vars
-$banner_list = [];
+$banner_objects = [];
 $is_single_banner = false;
 $single_banner_image = '';
 $single_banner_title = '';
@@ -16,32 +16,20 @@ $single_banner_subtitle = '';
 if (is_category() || is_tax() || is_archive()) {
     // TAXONOMY CASE
     $term = get_queried_object();
-    $image = get_field('banner_image', $term); // Assumed field name on taxonomy
+    $image = get_field('banner_image', $term); 
     
-    // Fallback if no specific banner for cat, maybe use a default or empty
     if ($image) {
         $is_single_banner = true;
         $single_banner_image = $image;
         $single_banner_title = single_term_title('', false);
-        $single_banner_subtitle = ''; // Optional: get_field('sub_title', $term);
+        $single_banner_subtitle = ''; 
     } 
 } else {
-    // PAGE CASE (Home)
-    // Check if this is part of Flexible Content loop or just a standalone include
-    // If inside loop, variables might be passed or get_sub_field works.
-    // However, if we want to support "all pages", we might need to check get_field (top level) or get_sub_field (nested)
-    // Since this was originally in modules/home/banner.php using get_sub_field('banner_list'), 
-    // we should try that first, but also support get_field('banner_list') if used outside flex loop.
-    
-    // Check if we are in a flexible content row
-    if (get_row_layout()) {
-       $banner_list = get_sub_field('banner_list');
-    } else {
-       $banner_list = get_field('banner_list');
-    }
+    // PAGE CASE
+    $banner_objects = get_field('banner_select_page');
 }
 
-// RENDER
+// RENDER SINGLE BANNER (Taxonomy)
 if ($is_single_banner):
 ?>
 <section class="section-banner-home">
@@ -63,14 +51,22 @@ if ($is_single_banner):
     </div>
 </section>
 
-<?php elseif ($banner_list): ?>
+<?php 
+// RENDER SLIDER BANNER (Selected Banners -> Repeater Slides)
+elseif ($banner_objects): 
+?>
 <section class="section-banner-home">
     <div class="swiper swiper-home-banner">
         <div class="swiper-wrapper">
-            <?php foreach ($banner_list as $item): 
-                $image = $item['image'];
-                $sub_title = $item['sub_title'];
-                $title = $item['title'];
+            <?php foreach ($banner_objects as $post_obj): 
+                $post_id = $post_obj->ID;
+                $slides = get_field('banner_slides', $post_id);
+
+                if ($slides):
+                    foreach($slides as $slide):
+                        $image = $slide['image'];
+                        $sub_title = $slide['sub_title'];
+                        $title = $slide['title'];
             ?>
             <div class="swiper-slide">
                 <div class="box-slide">
@@ -84,7 +80,11 @@ if ($is_single_banner):
                     </div>
                 </div>
             </div>
-            <?php endforeach; ?>
+            <?php 
+                    endforeach;
+                endif;
+            endforeach; 
+            ?>
         </div>
         <div class="swiper-pagination"></div>
     </div>
