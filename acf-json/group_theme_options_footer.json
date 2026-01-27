@@ -1,7 +1,42 @@
 {
     "key": "group_theme_options_footer",
-    "title": "Footer Options",
+    "title": "Header - Footer Options",
     "fields": [
+        {
+            "key": "field_695e14450c1eb",
+            "label": "Header",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_695e14540c1ec",
+            "label": "Button Contact Header",
+            "name": "button_contact_header",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "allow_in_bindings": 0
+        },
         {
             "key": "field_695b6f1f9cfb6",
             "label": "Footer",
@@ -22,10 +57,10 @@
         },
         {
             "key": "field_695b6f0d9cfb5",
-            "label": "Footer Logo Text",
-            "name": "footer_logo_text",
+            "label": "Footer Logo Image",
+            "name": "footer_logo_img",
             "aria-label": "",
-            "type": "text",
+            "type": "image",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -34,12 +69,17 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "maxlength": "",
+            "return_format": "array",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
             "allow_in_bindings": 0,
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
+            "preview_size": "medium"
         },
         {
             "key": "field_695b6ef29cfb4",
@@ -147,6 +187,34 @@
                     "parent_repeater": "field_footer_info_list"
                 }
             ]
+        },
+        {
+            "key": "field_6969fc4fb63b7",
+            "label": "Footer chứng chỉ",
+            "name": "footer_certificates_gallery",
+            "aria-label": "",
+            "type": "gallery",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "library": "all",
+            "min": "",
+            "max": "",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "insert": "append",
+            "preview_size": "medium"
         }
     ],
     "location": [
@@ -167,5 +235,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1767599951
+    "modified": 1768553571
 }

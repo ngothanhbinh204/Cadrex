@@ -2,7 +2,7 @@
 <html <?php language_attributes(); ?>>
 
 <head>
-	<meta charset="<?php bloginfo( 'charset' ); ?>">
+	<meta charset="<?php bloginfo('charset'); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="stylesheet" href="">
@@ -20,50 +20,52 @@
 <body <?php body_class(); ?>>
 	<header>
 		<?php
-				$custom_logo_id = get_theme_mod('custom_logo');
-				$logo_img = wp_get_attachment_image_src($custom_logo_id, 'full');
-				$site_name = get_bloginfo('name');
-			?>
+		$custom_logo_id = get_theme_mod('custom_logo');
+		$logo_img = wp_get_attachment_image_src($custom_logo_id, 'full');
+		$site_name = get_bloginfo('name');
+		?>
 		<div class="container-header">
-			<div class="logo md:rem:w-[290px] rem:w-[140px] md:py-2.5 z-4 xl:px-0 lg:px-2">
-				<a class="img-ratio ratio:pt-[80_290]" href="<?php echo home_url(); ?>">
-					<?php if ($logo_img): ?>
-					<img src="<?php echo esc_url($logo_img[0]); ?>" alt="<?php echo esc_attr($site_name); ?>">
-					<?php else: ?>
-					<span><?php echo esc_html($site_name); ?></span>
-					<?php endif; ?>
-				</a>
+			<div class="logo md:py-2.5 z-4">
+				<div class="xl:rem:w-[317px] lg:rem:w-[267px] rem:w-[190px] ">
+					<a class="img-ratio ratio:pt-[50_317]" href="<?php echo home_url(); ?>">
+						<?php if ($logo_img): ?>
+							<img src="<?php echo esc_url($logo_img[0]); ?>" alt="<?php echo esc_attr($site_name); ?>">
+						<?php else: ?>
+							<span><?php echo esc_html($site_name); ?></span>
+						<?php endif; ?>
+					</a>
+				</div>
 			</div>
 			<div class="list-menu-header">
 				<?php
-                    if (has_nav_menu('header-menu')) {
-                        wp_nav_menu(array(
-                            'theme_location' => 'header-menu',
-                            'container'      => 'div',
-                            'container_class'=> 'header-menu',
-                            'items_wrap'     => '<ul>%3$s</ul>',
-                            'walker'         => new CanhCam_Walker(),
-                            'depth'          => 2,
-                        ));
-                    }
-                    ?>
+				if (has_nav_menu('header-menu')) {
+					wp_nav_menu(array(
+						'theme_location' => 'header-menu',
+						'container'      => 'div',
+						'container_class' => 'header-menu',
+						'items_wrap'     => '<ul>%3$s</ul>',
+						'walker'         => new CanhCam_Walker(),
+						'depth'          => 2,
+					));
+				}
+				?>
 				<div class="icon-search header-search"><i class="fa-regular fa-magnifying-glass"></i></div>
 				<div class="header-language">
 					<div class="header-language-active">
 						<ul>
-							<li class="wpml-ls-current-language"><a href=""> <span class="wpml-ls-native">VN</span></a>
+							<li class="wpml-ls-current-language"><a href=""> <span class="wpml-ls-native">EN</span></a>
 							</li>
 							<ul>
-								<li> <a href=""> <span>EN</span></a></li>
+								<li> <a href=""> <span>VN</span></a></li>
 							</ul>
 						</ul>
 					</div>
 					<div class="header-language-list">
 						<ul>
-							<li class="wpml-ls-current-language"><a href=""> <span class="wpml-ls-native">VN</span></a>
+							<li class="wpml-ls-current-language"><a href=""> <span class="wpml-ls-native">EN</span></a>
 							</li>
 							<ul>
-								<li> <a href=""> <span>EN</span></a></li>
+								<li> <a href=""> <span>VN</span></a></li>
 							</ul>
 						</ul>
 					</div>
@@ -77,10 +79,10 @@
 					</div>
 				</div>
 				<?php
-					$button_contact_header = get_field('button_contact_header', 'option');
-					$link = $button_contact_header['url'];
-					$title = $button_contact_header['title'];
-					$target = $button_contact_header['target'] ? $button_contact_header['target'] : '_self';
+				$button_contact_header = get_field('button_contact_header', 'option');
+				$link = $button_contact_header['url'];
+				$title = $button_contact_header['title'];
+				$target = $button_contact_header['target'] ? $button_contact_header['target'] : '_self';
 				?>
 				<a class="btn-contact-header" href="<?php echo esc_url($link); ?>"
 					target="<?php echo esc_attr($target); ?>"><?php echo esc_html($title); ?></a>
@@ -88,9 +90,6 @@
 		</div>
 		<div class="header-mobile-wrapper">
 			<div class="header-mobile">
-				<div class="logo-mobile rem:w-[290px] opacity-0"><a class="img-ratio ratio:pt-[80_290]"
-						href="<?php echo home_url(); ?>"> <img
-							src="<?php echo get_template_directory_uri(); ?>/img/logo.png" alt=""></a></div>
 				<div class="list-menu-header flex-1 w-full">
 					<ul>
 						<li><a href="#">Home</a></li>
@@ -113,7 +112,7 @@
 		<div class="container">
 			<div class="wrap-form-search-product">
 				<div class="productsearchbox">
-					<input type="text" placeholder="Bộ ghế sofa 2022">
+					<input type="text" placeholder="Tìm Kiếm...">
 					<button class="text-white text-base"><i class="fa-regular fa-magnifying-glass "></i></button>
 				</div>
 			</div>

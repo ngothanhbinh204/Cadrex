@@ -1,6 +1,7 @@
 <?php
-if (have_rows('home_news')):
-    while (have_rows('home_news')): the_row();
+$post_id = get_queried_object_id();
+if (have_rows('home_news', $post_id)):
+    while (have_rows('home_news', $post_id)): the_row();
         if (!get_sub_field('enable_section')) continue;
 
         $title         = get_sub_field('title');
@@ -63,7 +64,7 @@ if (have_rows('home_news')):
             }
         }
 ?>
-<section class="section-py section-home-news">
+<section id="news" class="section-py section-home-news">
 	<div class="wrap container" data-toggle="tabslet">
 		<div class="box-title" data-aos="fade-down" data-aos-delay="100" data-duration="200">
 			<h2 class="title heading-1 text-primary-1"><?php echo esc_html($title); ?></h2>
@@ -149,13 +150,13 @@ if (have_rows('home_news')):
 
 		<div class="flex-center">
 			<?php if ($discover_link && !empty($discover_link['url'])): ?>
-			<a class="btn-primary body-2 text-white bg-primary-4 px-6 py-3 rounded-1 hover:bg-primary-1 undefined"
+			<a class="btn-primary body-2 text-white bg-primary-1 px-6 py-3 rounded-1 hover:bg-primary-2 undefined"
 				href="<?php echo esc_url($discover_link['url']); ?>"
 				target="<?php echo esc_attr($discover_link['target'] ? $discover_link['target'] : '_self'); ?>">
 				<span><?php echo esc_html($discover_link['title']); ?></span>
 			</a>
 			<?php else: ?>
-			<a class="btn-primary body-2 text-white bg-primary-4 px-6 py-3 rounded-1 hover:bg-primary-1 undefined"
+			<a class="btn-primary body-2 text-white bg-primary-1 px-6 py-3 rounded-1 hover:bg-primary-2 undefined"
 				href="#">
 				<span>Discover more</span>
 			</a>

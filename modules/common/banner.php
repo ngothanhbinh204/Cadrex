@@ -37,7 +37,7 @@ if ($is_single_banner):
         <div class="swiper-wrapper">
              <div class="swiper-slide">
                 <div class="box-slide">
-                    <div class="img-ratio box-image ratio:pt-[880_1920] -lg:ratio:pt-[1_1] font-medium">
+                    <div class="img-ratio box-image ratio:pt-[880_1920] -lg:ratio:pt-[1_1] h-[100dvh] font-medium">
                         <?php echo get_image_attrachment($single_banner_image); ?>
                     </div>
                     <div class="box-content">
