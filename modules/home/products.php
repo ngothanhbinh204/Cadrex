@@ -40,7 +40,8 @@ if (have_rows('home_products')):
 
     <div class="item-text-image -md:shadow-md ">
 
-        <div class="box-image" >
+       <div class="box-item">
+         <div class="box-image" >
 
             <div class="img-ratio ratio:pt-[550_960] -lg:ratio:pt-[1_1] -md:ratio:pt-[550_960] ">
 
@@ -65,6 +66,7 @@ if (have_rows('home_products')):
             <a class="inline-block btn-primary body-2 text-white bg-primary-1 px-6 py-3 rounded-1 hover:bg-primary-2 undefined" href="<?php echo esc_url($link); ?>"><span>Discover more</span></a>
 
         </div>
+       </div>
 
     </div>
 

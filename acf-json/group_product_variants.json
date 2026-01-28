@@ -1,0 +1,56 @@
+{
+    "key": "group_product_details",
+    "title": "Product Data",
+    "fields": [
+        {
+            "key": "field_product_specs",
+            "label": "Specifications (Popup)",
+            "name": "specs",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "100",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "sub_fields": [
+                {
+                    "key": "field_spec_label",
+                    "label": "Label",
+                    "name": "label",
+                    "type": "text",
+                    "wrapper": { "width": "40" }
+                },
+                {
+                    "key": "field_spec_value",
+                    "label": "Value",
+                    "name": "value",
+                    "type": "textarea",
+                    "rows": 2,
+                    "wrapper": { "width": "60" }
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "product"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0
+}

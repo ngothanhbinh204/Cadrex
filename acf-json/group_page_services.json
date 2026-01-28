@@ -1,0 +1,101 @@
+{
+    "key": "group_page_services",
+    "title": "Page Services",
+    "fields": [
+        {
+            "key": "field_service_banner",
+            "label": "Banner Image",
+            "name": "service_banner_image",
+            "type": "image",
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "wrapper": { "width": "100" }
+        },
+        {
+            "key": "field_service_intro",
+            "label": "Intro Content",
+            "name": "service_intro_content",
+            "type": "wysiwyg",
+            "tabs": "visual",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "wrapper": { "width": "100" }
+        },
+        {
+            "key": "field_service_hero_solutions",
+            "label": "Hero Solutions (Intro Blocks)",
+            "name": "service_hero_solutions",
+            "type": "repeater",
+            "button_label": "Add Solution Block",
+            "wrapper": { "width": "100" },
+            "sub_fields": [
+                {
+                    "key": "field_solution_title",
+                    "label": "Title",
+                    "name": "title",
+                    "type": "text",
+                    "wrapper": {"width": "30"}
+                },
+                {
+                    "key": "field_solution_image",
+                    "label": "Image",
+                    "name": "image",
+                    "type": "image",
+                    "return_format": "array",
+                    "wrapper": {"width": "30"}
+                },
+                {
+                    "key": "field_solution_desc",
+                    "label": "Description",
+                    "name": "description",
+                    "type": "textarea",
+                    "rows": 4,
+                    "wrapper": {"width": "40"}
+                }
+            ]
+        },
+        {
+            "key": "field_service_sections",
+            "label": "Service Lists Sections",
+            "name": "service_sections",
+            "type": "repeater",
+            "button_label": "Add Service Section",
+            "instructions": "Creates sections like 'Dịch vụ khai thác mỏ'",
+            "sub_fields": [
+                {
+                    "key": "field_section_title",
+                    "label": "Section Title",
+                    "name": "section_title",
+                    "type": "text"
+                },
+                {
+                    "key": "field_sec_services",
+                    "label": "Select Services",
+                    "name": "services_list",
+                    "type": "relationship",
+                    "post_type": ["service"],
+                    "return_format": "object",
+                    "ui": 1,
+                    "filters": ["search"]
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "templates/page-services.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": ["the_content"],
+    "active": true
+}

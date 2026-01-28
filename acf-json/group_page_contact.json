@@ -1,0 +1,108 @@
+{
+    "key": "group_page_contact",
+    "title": "Page Contact",
+    "fields": [
+        {
+            "key": "field_contact_form_title",
+            "label": "Form Title",
+            "name": "contact_form_title",
+            "type": "text",
+            "default_value": "GỬI LỜI NHẮN",
+            "wrapper": { "width": "50" }
+        },
+        {
+            "key": "field_contact_form_subtitle",
+            "label": "Form Subtitle",
+            "name": "contact_form_subtitle",
+            "type": "textarea",
+            "default_value": "Nếu Quý khách hàng có yêu cầu, thắc mắc. Vui lòng liên hệ với chúng tôi.",
+            "rows": 2,
+            "wrapper": { "width": "50" }
+        },
+        {
+            "key": "field_contact_form_shortcode",
+            "label": "Contact Form Shortcode",
+            "name": "contact_form_shortcode",
+            "type": "text",
+            "instructions": "Enter CF7 Shortcode here e.g. [contact-form-7 id=\"123\"]",
+            "wrapper": { "width": "100" }
+        },
+        {
+            "key": "field_company_name",
+            "label": "Company Name (Right Column)",
+            "name": "company_name",
+            "type": "text",
+            "default_value": "CÔNG TY CỔ PHẦN TẬP ĐOÀN DREAM LANDS",
+            "wrapper": { "width": "100" }
+        },
+        {
+            "key": "field_office_list",
+            "label": "Office Locations",
+            "name": "office_list",
+            "type": "repeater",
+            "button_label": "Add Office",
+            "sub_fields": [
+                {
+                    "key": "field_office_icon",
+                    "label": "Icon",
+                    "name": "icon_class",
+                    "type": "select",
+                    "instructions": "Select an icon.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "location-dot": "Location",
+                        "phone": "Phone",
+                        "envelope": "Mail"
+                    },
+                    "default_value": "location-dot",
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_office_content",
+                    "label": "Content",
+                    "name": "content",
+                    "type": "wysiwyg",
+                    "tabs": "visual",
+                    "toolbar": "basic",
+                    "media_upload": 0,
+                    "wrapper": { "width": "70" }
+                }
+            ]
+        },
+        {
+            "key": "field_contact_map",
+            "label": "Google Map Embed Code",
+            "name": "contact_map_iframe",
+            "type": "textarea",
+            "instructions": "Paste the full iframe code from Google Maps share.",
+            "rows": 4
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "templates/page-contact.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": ["the_content"],
+    "active": true
+}

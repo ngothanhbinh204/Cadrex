@@ -1,4 +1,16 @@
 <?php
+// Register Service Post Type
+create_post_type('service', array(
+	'name' => 'Services',
+	'singular_name' => 'Service',
+	'slug' => 'service',
+	'icon' => 'dashicons-hammer',
+    'supports' => array('title', 'thumbnail'),
+    'has_archive' => false,
+    'public' => true,
+    'show_in_rest' => true
+));
+
 // Register Product Post Type
 create_post_type('product', array(
 	'name' => 'Products',
